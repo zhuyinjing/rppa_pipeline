@@ -2,8 +2,9 @@
 <div>
   <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
     <el-menu-item index="home">{{$t('navbar.home')}}</el-menu-item>
-    <el-menu-item index="project">{{$t('navbar.project_list')}}</el-menu-item>
-    <el-menu-item index="userList" v-if="$store.state.role === 'ADMIN'">用户列表</el-menu-item>
+    <el-menu-item index="analysis_list">分析列表</el-menu-item>
+    <el-menu-item index="project_list">{{$t('navbar.project_list')}}</el-menu-item>
+    <el-menu-item index="user_list" v-if="$store.state.role === 'ADMIN'">用户列表</el-menu-item>
     <el-menu-item index="app_heatmap_input">{{$t('navbar.app_tool')}}</el-menu-item>
     <el-menu-item index="admin_species_config" v-if="$store.state.role === 'ADMIN'">物种配置</el-menu-item>
     <a href="http://www.eclickgene.com/" target="_blank" class="alink">易点基因</a>
@@ -71,14 +72,19 @@ export default {
             'path': '/'
           })
           break
-        case 'project':
+        case 'analysis_list':
+          this.$router.push({
+            'name': 'analysis_list'
+          })
+          break
+        case 'project_list':
           sessionStorage.clear()
           sessionStorage.setItem('navbarItem', key)
           this.$router.push({
             'name': 'project_list'
           })
           break
-        case 'userList':
+        case 'user_list':
           this.$router.push({
             'name': 'user_list'
           })

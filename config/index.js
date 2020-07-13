@@ -12,21 +12,21 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/server': {
-        target: 'http://10.10.10.6:7003',
+        target: 'http://rna.grandomics.com/',
         changeOrigin: true,
         pathRewrite: {
           '/server': '/server/'
         }
       },
       '/admin': {
-        target: 'http://10.10.10.6:7003',
+        target: 'http://rna.grandomics.com/',
         changeOrigin: true,
         pathRewrite: {
           '/admin': '/admin/'
         }
       },
       '/getUser': {
-        target: 'http://10.10.10.6:7003',
+        target: 'http://rna.grandomics.com/',
         changeOrigin: true,
         pathRewrite: {
           '/getUser': '/getUser/'
