@@ -80,6 +80,8 @@ import {
   DatePicker,
   Carousel,
   CarouselItem,
+  Steps,
+  Step
 } from 'element-ui';
 
 HighchartsMore(Highcharts)
@@ -128,6 +130,8 @@ Vue.use(Loading.directive);
 Vue.use(DatePicker);
 Vue.use(Carousel);
 Vue.use(CarouselItem);
+Vue.use(Step);
+Vue.use(Steps);
 
 Vue.prototype.$loading = Loading.service;
 Vue.prototype.$msgbox = MessageBox;

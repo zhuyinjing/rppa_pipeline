@@ -16,13 +16,19 @@
             <el-col :span="4"><div class="grid-content bg-purple">
               <el-input v-model="projectName" placeholder="请输入内容" clearable></el-input>
             </div></el-col>
-            <el-col :span="2"><div class="grid-content bg-purple line-height-40">项目类型</div></el-col>
-            <el-col :span="4"><div class="grid-content bg-purple">
-              <el-select v-model="type" placeholder="请选择" clearable>
-                <el-option v-for="item in typeList" :value="item" :label="item" :key="item"></el-option>
-              </el-select>
+            <el-col :span="2"><div class="grid-content bg-purple line-height-40">项目时间</div></el-col>
+            <el-col :span="10"><div class="grid-content bg-purple">
+              <el-date-picker
+                v-model="projectTime"
+                type="datetimerange"
+                :picker-options="pickerOptions"
+                range-separator="至"
+                start-placeholder="开始日期"
+                end-placeholder="结束日期"
+                align="right">
+              </el-date-picker>
             </div></el-col>
-            <el-col :span="4"><div class="grid-content bg-purple line-height-40">
+            <el-col :span="4" :offset="18"><div class="grid-content bg-purple line-height-40">
               <el-button type="primary" size="small" @click="search()">查询</el-button>
               <el-button type="" size="small" @click="clear()">清空</el-button>
             </div></el-col>
@@ -36,7 +42,7 @@
               <tr>
                 <th>项目ID</th>
                 <th>项目名称</th>
-                <th>项目类型</th>
+                <!-- <th>项目类型</th> -->
                 <th>物种</th>
                 <th>创建时间</th>
                 <th>操作</th>
@@ -102,7 +108,35 @@ export default {
       projectId: '',
       type: '',
       projectName: '',
-      createLoading: false
+      createLoading: false,
+      pickerOptions: {
+          shortcuts: [{
+            text: '最近一周',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
+              picker.$emit('pick', [start, end]);
+            }
+          }, {
+            text: '最近一个月',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
+              picker.$emit('pick', [start, end]);
+            }
+          }, {
+            text: '最近三个月',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
+              picker.$emit('pick', [start, end]);
+            }
+          }]
+        },
+        projectTime: ''
     }
   },
   components: {
@@ -155,8 +189,6 @@ export default {
                   {
                     "mDataProp" : "name"
                 }, {
-                    "mDataProp" : "type"
-                }, {
                     "mDataProp" : "speciesInfoEntity.commonName"
                 }, {
                     "mDataProp" : "openTime",
@@ -168,7 +200,7 @@ export default {
                     "mDataProp" : "id",
                     "mRender" : function(data, type, full) {
                         if (self.$store.state.role === 'ADMIN') {
-                          return '<button id="experimentBtn" value="'+ data + '" class="el-button el-button--info el-button--mini" @click="createExperiment()">实验设计</button>' + '<button id="uploadFileBtn" value="'+ data + '" class="el-button el-button--warning el-button--mini" @click="createExperiment()">上传文件</button>' + '<button id="runTaskBtn" value="'+ data + '" class="el-button el-button--success el-button--mini" @click="createExperiment()">运行分析</button>' + '<button id="reportBtn" class="el-button el-button--primary el-button--mini">查看报告</button>  <a href="/projects/' + data +'/sphinx.tar.gz" download><button class="el-button el-button--warning el-button--mini is-plain">下载离线报告</button></a> ' + '<button id="deleteBtn" value="'+ data + '" class="el-button el-button--danger el-button--mini is-plain" @click="createExperiment()">'+ '<i class="el-icon-delete"></i>'+'</button>'
+                          return '<button id="experimentBtn" value="'+ data + '" class="el-button el-button--info el-button--mini" @click="createExperiment()">实验设计</button>' + '<button id="runTaskBtn" value="'+ data + '" class="el-button el-button--success el-button--mini" @click="createExperiment()">运行分析</button>' + '<button id="reportBtn" class="el-button el-button--primary el-button--mini">查看报告</button>  <a href="/projects/' + data +'/sphinx.tar.gz" download><button class="el-button el-button--warning el-button--mini is-plain">下载离线报告</button></a> ' + '<button id="deleteBtn" value="'+ data + '" class="el-button el-button--danger el-button--mini is-plain" @click="createExperiment()">'+ '<i class="el-icon-delete"></i>'+'</button>'
                         } else {
                           return '<button id="reportBtn" class="el-button el-button--primary el-button--mini">查看报告</button> <a href="/projects/' + data +'/sphinx.tar.gz" download><button class="el-button el-button--warning el-button--mini is-plain">下载离线报告</button></a>'
                         }

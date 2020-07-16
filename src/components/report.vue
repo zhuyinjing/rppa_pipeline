@@ -6,8 +6,9 @@
       <el-breadcrumb-item>{{$t('report.project')}} {{$store.state.projectName}}</el-breadcrumb-item>
       <el-breadcrumb-item></el-breadcrumb-item>
     </el-breadcrumb>
-    <h2>{{$t('report.title')}}</h2>
-    <p>{{$t('report.introduction')}}</p>
+    <h2>RPPA简介</h2>
+    <p>反相蛋白微阵列Reverse Phase Protein Array （RPPA）蛋白组学技术，是一种基于抗体检测的高通量高产出蛋白组学技术平台，可用于检测广泛来源的细胞和组织样本。
+基于RPPA蛋白组学技术平台，可分析培养细胞、小鼠模型组织、及临床病人样本（鲜冻样本）中超过300种癌症相关蛋白及蛋白修饰位点，覆盖几十个癌症相关的重要信号通路，提供蛋白组学大数据的基本生物信息学分析和解读。</p>
 
     <h2>{{$t('report.project')}}{{$store.state.projectName}}{{$t('report.describe')}}</h2>
     <p>{{$t('report.species')}}：<span class="latinNameStyle">{{this.displayLatinName}}</span> ( {{this.displayName}} )</p>

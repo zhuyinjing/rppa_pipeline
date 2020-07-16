@@ -10,7 +10,7 @@
     <a href="http://www.eclickgene.com/" target="_blank" class="alink">易点基因</a>
   </el-menu>
   <div class="userDiv" v-show="$store.state.username">
-    <el-dropdown trigger="click" @command="changeLocale">
+    <!-- <el-dropdown trigger="click" @command="changeLocale">
       <span class="el-dropdown-link">
         {{language}}<i class="el-icon-arrow-down el-icon--right"></i>
       </span>
@@ -18,7 +18,7 @@
         <el-dropdown-item command="中文">中文</el-dropdown-item>
         <el-dropdown-item command="English">English</el-dropdown-item>
       </el-dropdown-menu>
-    </el-dropdown>&nbsp;&nbsp;
+    </el-dropdown>&nbsp;&nbsp; -->
     <span class="nameStyle">{{$store.state.username}}</span>
     <el-button type="text" @click="logout">{{$t('navbar.logout')}}</el-button>
   </div>

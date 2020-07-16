@@ -22,6 +22,14 @@ let router = [
     meta: {
       role: 'ADMIN'
     }
+  },
+  {
+    path: '/analysis_runTask',
+    name: 'analysis_runTask',
+    component: resolve => require(['@/views/admin/analysis_runTask'], resolve),
+    meta: {
+      role: 'ADMIN'
+    }
   }
 ]
 export default router

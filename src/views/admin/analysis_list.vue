@@ -60,21 +60,6 @@
         <el-form-item :label="$t('project_list.project_name')">
           <el-input v-model="form.name" auto-complete="off" clearable></el-input>
         </el-form-item>
-        <el-form-item :label="$t('project_list.project_introduction')">
-          <el-input v-model="form.description" auto-complete="off" clearable></el-input>
-        </el-form-item>
-        <div class="margin-bottom-10">
-          <label for="">{{$t('project_list.species_type')}}</label>
-        </div>
-        <el-select v-model="form.species" :placeholder="$t('project_list.species_type')">
-          <el-option :value="key" v-for="(item, key) in $store.state.speciesArr" :key="key">{{key}}</el-option>
-        </el-select>
-        <div class="selectDiv">
-          <label for="">{{$t('project_list.sequencing_type')}}</label>
-        </div>
-        <el-select v-model="form.type" :placeholder="$t('project_list.species_type')">
-          <el-option v-for="item in typeList" :key="item" :label="item" :value="item"></el-option>
-        </el-select>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="createProjectDialog = false">{{$t('button.cancel')}}</el-button>
@@ -288,7 +273,7 @@ export default {
     },
     runTask (item) {
       this.commitStore(item)
-      this.$router.push({'name': 'run_task'})
+      this.$router.push({'name': 'analysis_runTask'})
     },
     report (item) {
       this.commitStore(item)
