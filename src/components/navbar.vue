@@ -2,12 +2,13 @@
 <div>
   <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
     <el-menu-item index="home">{{$t('navbar.home')}}</el-menu-item>
-    <el-menu-item index="analysis_list">分析列表</el-menu-item>
+    <el-menu-item index="analysis_list">{{$t('navbar.analysis_list')}}</el-menu-item>
     <el-menu-item index="project_list">{{$t('navbar.project_list')}}</el-menu-item>
     <el-menu-item index="user_list" v-if="$store.state.role === 'ADMIN'">用户列表</el-menu-item>
     <el-menu-item index="app_heatmap_input">{{$t('navbar.app_tool')}}</el-menu-item>
     <el-menu-item index="admin_species_config" v-if="$store.state.role === 'ADMIN'">物种配置</el-menu-item>
-    <a href="http://www.eclickgene.com/" target="_blank" class="alink">易点基因</a>
+    <a href="http://www.e.com/" target="_blank" class="alink">定制连接</a>
+    <el-menu-item index="login">{{$t('navbar.login')}}</el-menu-item>
   </el-menu>
   <div class="userDiv" v-show="$store.state.username">
     <!-- <el-dropdown trigger="click" @command="changeLocale">
@@ -75,6 +76,11 @@ export default {
         case 'analysis_list':
           this.$router.push({
             'name': 'analysis_list'
+          })
+          break
+        case 'login':
+          this.$router.push({
+            'name': 'login'
           })
           break
         case 'project_list':

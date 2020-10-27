@@ -61,8 +61,10 @@ module.exports = {
   //  导航
   navbar: {
     home: '首页',
+    analysis_list: '分析列表',	  
     project_list: '项目列表',
     app_tool: '分析工具',
+    login: '登录',	  
     logout: '退出账号',
   },
   //  首页
