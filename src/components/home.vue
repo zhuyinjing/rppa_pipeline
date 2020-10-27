@@ -16,7 +16,7 @@
         <a href="http://www.firefox.com.cn/" target="_blank">Firefox</a>
       </p>
     </div>
-    <login ref="loginDiv"></login>
+    <!-- <login ref="loginDiv"></login> -->
 
     <!-- <div class="footer">{{$t('home.footer_font')}}</div> -->
     <div class="footer">{{record_num}} | Powered by <a :href="hrefUrl" target="_blank" style="color: #970720;">{{urlText}}</a> </div>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <el-card class="box-card">
+    <el-card class="box-card">
       <el-form :model="form">
         <el-form-item label="用户名" :label-width="formLabelWidth">
           <el-input type="text" v-model="form.username" auto-complete="off" clearable></el-input>
@@ -15,26 +15,25 @@
       <div style="float: right">
         <el-button type="primary" @click="login()">登 录</el-button>
       </div>
-    </el-card> -->
+    </el-card>
 
     <el-dialog title="登 录" :visible.sync="loginDialog" width="400px">
-
-    <el-form :model="form">
-      <el-form-item label="用户名" :label-width="formLabelWidth">
-        <el-input type="text" v-model="form.username" auto-complete="off" clearable></el-input>
-      </el-form-item>
-      <el-form-item label="密码" :label-width="formLabelWidth">
-        <el-input type="password" v-model="form.password" auto-complete="off" clearable></el-input>
-      </el-form-item>
-    </el-form>
-    <div class="" style="text-align:center">
-      <span>没有账号？</span> <el-button type="text" @click="register()">注 册</el-button>
-    </div>
-    <div slot="footer" class="dialog-footer">
-      <el-button @click="loginDialog = false">取 消</el-button>
-      <el-button type="primary" @click="login()">登 录</el-button>
-    </div>
-  </el-dialog>
+      <el-form :model="form">
+        <el-form-item label="用户名" :label-width="formLabelWidth">
+          <el-input type="text" v-model="form.username" auto-complete="off" clearable></el-input>
+        </el-form-item>
+        <el-form-item label="密码" :label-width="formLabelWidth">
+          <el-input type="password" v-model="form.password" auto-complete="off" clearable></el-input>
+        </el-form-item>
+      </el-form>
+      <div class="" style="text-align:center">
+        <span>没有账号？</span> <el-button type="text" @click="register()">注 册</el-button>
+      </div>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="loginDialog = false">取 消</el-button>
+        <el-button type="primary" @click="login()">登 录</el-button>
+      </div>
+    </el-dialog>
 
   <register ref="registerDiv"></register>
   </div>
